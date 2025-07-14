@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSecurity Portfolio | Computer Science Graduate</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #64ffda;
+            --accent: #ccd6f6;
+            --light: #8892b0;
+            --dark: #020c1b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--accent);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h3 {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 30px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-right: 20px;
+        }
+        
+        .section-title .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--light);
+            opacity: 0.2;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .skill {
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        /* Hacker Counter Section */
+        .counter-section {
+            background-color: var(--dark);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .counter-container {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(2, 12, 27, 0.9));
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 10px;
+            padding: 60px 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(2, 12, 27, 0.7);
+        }
+        
+        .counter-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+        }
+        
+        .counter {
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            color: #ff5555;
+            text-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .counter-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--light);
+        }
+        
+        /* Interests Section */
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .interest-card {
+            background-color: rgba(10, 25, 47, 0.5);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interest-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(100, 255, 218, 0.3);
+            box-shadow: 0 10px 30px rgba(2, 12, 27, 0.5);
+        }
+        
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--secondary);
+        }
+        
+        .interest-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .interest-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .interest-card p {
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-content p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--light);
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+        
+        .copyright {
+            color: var(--light);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 30px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .counter {
+                font-size: 3rem;
+            }
+        }
+        
+        .terminal {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            margin-top: 30px;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+        
+        .terminal-content {
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+        
+        .terminal-content span {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: var(--secondary);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav>
+            <div class="container">
+                <a href="#" class="logo">CyberDev</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                    <li><a href="#counter">Hack Counter</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h3>Hi, my name is</h3>
+                    <h1>Computer Science Graduate</h1>
+                    <h2>Cybersecurity & AI Enthusiast</h2>
+                    <p>I'm a Computer Science graduate from Bangladesh with expertise in networks, informatics, and cybersecurity. Currently seeking MS opportunities and professional roles in cybersecurity and artificial intelligence.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Me</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello! I'm a Computer Science graduate with a passion for cybersecurity and artificial intelligence. My academic journey in Bangladesh provided me with a solid foundation in computer networks, data informatics, and system security.</p>
+                        <p>During my studies, I focused on understanding the intricate workings of network protocols, security vulnerabilities, and defense mechanisms. I've developed several projects that simulate real-world cyber threats and their countermeasures.</p>
+                        <p>Currently, I'm actively seeking opportunities to pursue my Master's degree in Cybersecurity or Artificial Intelligence, as well as professional roles where I can apply my skills to solve complex security challenges.</p>
+                        <div class="skills">
+                            <div class="skill"><i class="fas fa-check"></i> Network Security</div>
+                            <div class="skill"><i class="fas fa-check"></i> Ethical Hacking</div>
+                            <div class="skill"><i class="fas fa-check"></i> AI & Machine Learning</div>
+                            <div class="skill"><i class="fas fa-check"></i> Cryptography</div>
+                            <div class="skill"><i class="fas fa-check"></i> System Administration</div>
+                            <div class="skill"><i class="fas fa-check"></i> Incident Response</div>
+                        </div>
+                    </div>
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dot dot-red"></div>
+                            <div class="terminal-dot dot-yellow"></div>
+                            <div class="terminal-dot dot-green"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <span><span style="color:#ff5555">user@cyber-portfolio</span><span style="color:#64ffda">:~$</span> whoami</span>
+                            <span>Computer Science Graduate</span>
+                            <span><span style="color:#ff5555">user@cyber-portfolio</span><span style="color:#64ffda">:~$</span> find ./education -type f</span>
+                            <span>./education/BSc_Computer_Science.txt</span>
+                            <span><span style="color:#ff5555">user@cyber-portfolio</span><span style="color:#64ffda">:~$</span> cat goals.txt</span>
+                            <span>1. Pursue Master's in Cybersecurity/AI</span>
+                            <span>2. Secure challenging cybersecurity role</span>
+                            <span>3. Develop innovative security solutions</span>
+                            <span><span style="color:#ff5555">user@cyber-portfolio</span><span style="color:#64ffda">:~$</span> <span class="cursor"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>My Interests</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="interests">
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Cybersecurity</h3>
+                        <p>Specializing in ethical hacking, vulnerability assessment, and security protocols to protect systems from malicious attacks and data breaches.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Computer Networks</h3>
+                        <p>Expertise in network architecture, protocols, and security measures to ensure robust and secure communication infrastructures.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Artificial Intelligence</h3>
+                        <p>Applying machine learning and AI techniques to enhance security systems, detect anomalies, and predict potential threats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hacker Counter Section -->
+        <section id="counter" class="counter-section">
+            <div class="container">
+                <div class="counter-container">
+                    <h2 class="counter-title">Real-time Security Breach Simulation</h2>
+                    <div class="counter">{{ formattedHackCount }}</div>
+                    <p class="counter-text">users compromised worldwide since you opened this page</p>
+                    <p class="counter-text">This simulation demonstrates the alarming rate of cyber attacks occurring globally every second.</p>
+                    <button @click="resetCounter" class="btn">Reset Counter</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <h3>Get In Touch</h3>
+                    <p>I'm currently exploring new opportunities for my Master's degree and professional roles in cybersecurity and AI. Whether you have a question or just want to connect, feel free to reach out!</p>
+                    <a href="mailto:contact@cyberportfolio.com" class="btn">Say Hello</a>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                    <div class="copyright">
+                        &copy; 2023 Computer Science Graduate. Designed with Vue.js
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, computed, onMounted } = Vue;
+        
+        createApp({
+            setup() {
+                // Hacker counter functionality
+                const hackCount = ref(0);
+                const startTime = ref(null);
+                const formattedHackCount = computed(() => {
+                    return hackCount.value.toLocaleString();
+                });
+                
+                // Simulate hackers attacking per second
+                const simulateHacks = () => {
+                    const now = Date.now();
+                    if (!startTime.value) startTime.value = now;
+                    
+                    // Calculate elapsed time in seconds
+                    const elapsedSeconds = (now - startTime.value) / 1000;
+                    
+                    // Simulate 15 hacks per second globally
+                    hackCount.value = Math.floor(elapsedSeconds * 15);
+                    
+                    requestAnimationFrame(simulateHacks);
+                };
+                
+                const resetCounter = () => {
+                    startTime.value = Date.now();
+                    hackCount.value = 0;
+                };
+                
+                onMounted(() => {
+                    simulateHacks();
+                });
+                
+                return {
+                    hackCount,
+                    formattedHackCount,
+                    resetCounter
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
