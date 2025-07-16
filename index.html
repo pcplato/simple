@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -217,11 +218,12 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
-        } 
+        }
+        
         /* blinking Section */
         .blinking-text {
             animation: blink 3s steps(10, start) infinite;
-            color: #FFF8DC; 
+            color: #FF8C00; 
             font-weight: bold; 
         }
 
@@ -230,9 +232,6 @@
           visibility: hidden;
          }
         }
-        
-
-        
         /* Experience Section */
         #experience {
             background: rgba(10, 15, 23, 0.5);
@@ -929,17 +928,16 @@
                             <span class="terminal-command">$ <span class="terminal-cursor"></span></span>
                         </div>
                     </div>
-                    <div class="hero-title">Starting Fresh, Eager to Learn</div>
-                          <div class="hero-quote fade-in">"Knowing is Power"</div>
+                     <div class="hero-title">Starting Fresh, Eager to Learn</div>
+                    <div class="hero-quote fade-in">"Knowing is Power"</div>
                     <div class="hero blinking-text"> "I am actively seeking research opportunities in the fields of: Informatics and AI" </div>
-                   
-                    <p> <br> Previously I focused on a professional and industry-oriented path, I am now actively seeking opportunities in academic or applied research. While not having direct research experience, I have a strong foundation in technology, problem-solving mentality, and a genuine interest to learn. </p>
-
+                     <p> <br> Previously I focused on a professional and industry-oriented path, I am now actively seeking opportunities in academic or applied research. While not having direct research experience, I have a strong foundation in technology, problem-solving mentality, and a genuine interest to learn. </p>
+                    
                     <div class="hero-buttons">
                         <a href="images/Plato's Resume.pdf" class="btn btn-primary" @click="downloadResume">
                             <i class="fas fa-download"></i> Download Resume
                         </a>
-                        <a href="https://docs.google.com/document/d/1eEuoN5uUkta050whu8j3-oUmqHGKodaEWR-BwiuUf-c/edit?usp=sharing" class="btn btn-outline" @click="viewResume">
+                        <a href="https://docs.google.com/document/d/1X70wyqP1qowzisJp7vzKXStwumCqH1LqyTD4D96LIrM/edit?usp=sharing" class="btn btn-outline" @click="viewResume">
                             <i class="fas fa-eye"></i> View Online
                         </a>
                     </div>
@@ -1127,7 +1125,7 @@
                             
                             <!-- NEW: External link button -->
                             <a v-if="cert.url" class="view-external" :href="cert.url" target="_blank" @click.stop>
-                                <i class="fas fa-external-link-alt"></i> View
+                                <i class="fas fa-external-link-alt"></i> Click Here to View Certificate
                             </a>
                         </div>
                     </div>
@@ -1235,7 +1233,7 @@
                     {
                         title: "Mastercard Cybersecurity virtual experience program on Forage",
                         company: "Forage",
-                        date: "October 2023",
+                        date: "2023",
                         description: "Performed network discovery and security auditing with Nmap, vulnerability scans with Nessus, web application security testing with Burp Suite, password cracking with HashCat, and SQL injection testing with SQLMap. Discovered and reported security vulnerabilities, detailed reports on possible security issues and improved security.",
                         expanded: false
                     },
@@ -1293,14 +1291,14 @@
                         url: "https://coursera.org/share/e8a275c6edae2cf1196f0d2ca4c22593"
                     },
                     {
-                        title: "Competitive Programming Award",
-                        issuer: "Islamic University",
-                        date: "2016",
-                        category: "Achievements",
-                        icon: "fas fa-medal",
-                        description: "Award for excellence in the university's competitive programming contest.",
-                        skills: "Problem-solving, Algorithm design, Coding efficiency",
-                        url: ""
+                        title: "Cybersecurity Training",
+                        issuer: "Extent IT Ltd.",
+                        date: "2023",
+                        category: "cybersecurity",
+                        icon: "fas fa-user-secret",
+                        description: "Developed course content on network security, cryptography, and risk management.",
+                        skills: "Cybersecurity,TCP/IP, IT Audit, Vulnerability Assessment, Network security",
+                        url: "https://drive.google.com/file/d/1nkqRoKLFpNn4aEgp0qnmCm2irNu3gQmS/view?usp=sharing"
                     },
                     {
                         title: "Networking Fundamentals",
@@ -1313,6 +1311,26 @@
                         url: "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
                     },
                     {
+                        title: "Linux Workshop",
+                        issuer: "IEEE BUBT",
+                        date: "2021",
+                        category: "Linux",
+                        icon: "fas fa-terminal",
+                        description: "Fundamental Linux Distro concepts terminal command, infrastructure, and security.",
+                        skills: "Terminal, File management, Security",
+                        url: "https://drive.google.com/file/d/1_UValQECesc7uWPfj0DindkR6ZMj_Scw/view?usp=sharing"
+                    },
+                    {
+                        title: "Leadership Workshop",
+                        issuer: "Movers Programme United Nations",
+                        date: "2021",
+                        category: "Others",
+                        icon: "fas fa-users",
+                        description: "This Movers Workshop is organised and facilitated by volunteers of the Movers Programme in order to raise awareness about the United Nations (UN) Sustainable Development Goals (SDGs) and enhance the entrepreneurial mindset and 21st-century skills of youth.",
+                        skills: "Terminal, File management, Security",
+                        url: "https://drive.google.com/file/d/1SSGMl52hs63dy5TIBmMskJIryKbkHmFw/view?usp=sharing"
+                    },
+                    {
                         title: "Google IT Support",
                         issuer: "Coursera",
                         date: "2020",
@@ -1321,9 +1339,19 @@
                         description: "Professional IT support training covering troubleshooting, customer service, and system administration.",
                         skills: "Troubleshooting, System administration, Customer support",
                         url: "https://coursera.org/share/cfec7e57978c5ae087d2346b36efb722"
+                    },
+                    {
+                        title: "Competitive Programming Award",
+                        issuer: "Islamic University",
+                        date: "2016",
+                        category: "Achievements",
+                        icon: "fas fa-medal",
+                        description: "Award for excellence in the university's competitive programming contest.",
+                        skills: "Problem-solving, Algorithm design, Coding efficiency",
+                        url: ""
                     }
                 ],
-                filters: ["All", "Cybersecurity", "Networking", "IT Support", "Achievements", "Programming"],
+                filters: ["All", "Cybersecurity", "Networking", "IT Support", "Achievements", "Programming","Linux", "Others"],
                 activeFilter: "All",
                 modalOpen: false,
                 currentCertificate: {
@@ -1404,13 +1432,13 @@
                     this.modalOpen = true;
                 },
                 
-                //downloadResume() {
-                  //  alert("Resume download would start now in a real implementation");
-                //},
+                downloadResume() {
+                    alert("Resume download would start now in a real implementation");
+                },
                 
-                //viewResume() {
-                  //  alert("Resume would be displayed in a modal here");
-                //},
+                viewResume() {
+                    alert("Resume would be displayed in a modal here");
+                },
                 
                 initAttackChart() {
                     const ctx = document.getElementById('attackChart').getContext('2d');
