@@ -217,7 +217,21 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        } 
+        /* blinking Section */
+        .blinking-text {
+            animation: blink 3s steps(10, start) infinite;
+            color: #FFF8DC; 
+            font-weight: bold; 
         }
+
+        @keyframes blink {
+          to {
+          visibility: hidden;
+         }
+        }
+        
+
         
         /* Experience Section */
         #experience {
@@ -885,7 +899,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title fade-in">Plato Chakma</h1>
                     <h2 class="hero-subtitle fade-in">Computer Science Graduate</h2>
-                    
+                    <p> I bring a strong sense of curiosity, self-motivation, and a deep passion for learning new technologies and solving real-world problems.</p>
                     <div class="terminal-container fade-in">
                         <div class="terminal-header">
                             <div class="terminal-dots">
@@ -915,14 +929,17 @@
                             <span class="terminal-command">$ <span class="terminal-cursor"></span></span>
                         </div>
                     </div>
-                    
-                    <div class="hero-quote fade-in">"Knowing is Power"</div>
-                    
+                    <div class="hero-title">Starting Fresh, Eager to Learn</div>
+                          <div class="hero-quote fade-in">"Knowing is Power"</div>
+                    <div class="hero blinking-text"> "I am actively seeking research opportunities in the fields of: Informatics and AI" </div>
+                   
+                    <p> <br> Previously I focused on a professional and industry-oriented path, I am now actively seeking opportunities in academic or applied research. While not having direct research experience, I have a strong foundation in technology, problem-solving mentality, and a genuine interest to learn. </p>
+
                     <div class="hero-buttons">
                         <a href="images/Plato's Resume.pdf" class="btn btn-primary" @click="downloadResume">
                             <i class="fas fa-download"></i> Download Resume
                         </a>
-                        <a href="https://docs.google.com/document/d/1eEuoN5uUkta050whu8j3-oUmqHGKodaEWR-BwiuUf-c/edit?usp=sharing" @click="viewResume">
+                        <a href="https://docs.google.com/document/d/1eEuoN5uUkta050whu8j3-oUmqHGKodaEWR-BwiuUf-c/edit?usp=sharing" class="btn btn-outline" @click="viewResume">
                             <i class="fas fa-eye"></i> View Online
                         </a>
                     </div>
@@ -1218,7 +1235,7 @@
                     {
                         title: "Mastercard Cybersecurity virtual experience program on Forage",
                         company: "Forage",
-                        date: "2023",
+                        date: "October 2023",
                         description: "Performed network discovery and security auditing with Nmap, vulnerability scans with Nessus, web application security testing with Burp Suite, password cracking with HashCat, and SQL injection testing with SQLMap. Discovered and reported security vulnerabilities, detailed reports on possible security issues and improved security.",
                         expanded: false
                     },
